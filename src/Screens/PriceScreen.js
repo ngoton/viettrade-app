@@ -246,6 +246,19 @@ export default class PriceScreen extends Component {
       });
 
   }
+  checkedAll() {
+      // the ischecked value will be set for that task in the tasks array
+      var newTasks = this.state.fullData;
+      
+      newTasks.map((item, index) => {
+        newTasks[index].isChecked = !newTasks[index].isChecked;
+      });
+      
+      this.setState({
+          data: newTasks
+      });
+
+  }
 
   orderClick(){
     let tireArr = [];
@@ -514,6 +527,22 @@ export default class PriceScreen extends Component {
                 shadowRadius: 2,}}>
                     <Button transparent onPress={() => this.setModalVisible3(true)} >
                       <Feather size={25} name="mail" style={{color: 'white'}} />
+                    </Button>
+                </Animated.View>
+                <Animated.View style={{...styles.controlStyles, opacity: this.state.controlOpacity, 
+                height: 20,
+                width: this.state.controlWidth-40,
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: '#fff',
+                paddingLeft: 10,
+                zIndex: 1000,
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 3 },
+                shadowOpacity: 0.5,
+                shadowRadius: 2,}}>
+                    <Button transparent onPress={() => this.checkedAll()} >
+                      <Feather size={15} name="check-circle" style={{color: '#0070c9'}} /><Text>Tất cả</Text>
                     </Button>
                 </Animated.View>
                 <List>
